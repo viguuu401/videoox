@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Videoox – Satisfying Video Generator</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 40px; }
+    input, button { padding: 10px; margin: 10px; width: 300px; }
+    .video-container { margin-top: 20px; }
+    .privacy { font-size: 0.9em; margin-top: 40px; color: #666; }
+  </style>
+</head>
+<body>
+  <h1>Videoox</h1>
+  <p>Enter your satisfying video idea:</p>
+  <input id="prompt" type="text" placeholder="e.g., slime swirl in 4K" />
+  <br/>
+  <button onclick="generateVideo()">Generate Video</button>
+  <div class="video-container" id="preview"></div>
+  <div class="privacy">
+    <p><strong>Privacy Policy</strong></p>
+    <p>We only use your text to show a video. No personal data stored or shared.</p>
+    <p>Contact: facelessboy721@gmail.com</p>
+  </div>
+  <script>
+    function generateVideo() {
+      const prompt = document.getElementById('prompt').value;
+      const preview = document.getElementById('preview');
+      preview.innerHTML = '';
+      // Demo embed video
+      const iframe = document.createElement('iframe');
+      iframe.width = "560";
+      iframe.height = "315";
+      iframe.src = "https://www.youtube.com/embed/I3vnaLZ-vZ0";
+      iframe.frameBorder = "0";
+      preview.appendChild(iframe);
+    }
+  </script>
+</body>
+</html>
