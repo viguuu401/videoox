@@ -1,40 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Videoox – Satisfying Video Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 40px; }
-    input, button { padding: 10px; margin: 10px; width: 300px; }
-    .video-container { margin-top: 20px; }
-    .privacy { font-size: 0.9em; margin-top: 40px; color: #666; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    h1 {
+      color: #222;
+    }
+    input, button {
+      padding: 12px;
+      margin: 10px;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      background: #008cff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0066cc;
+    }
+    .video-box {
+      margin-top: 30px;
+    }
+    iframe {
+      width: 100%;
+      max-width: 560px;
+      height: 315px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .footer {
+      margin-top: 50px;
+      font-size: 14px;
+      color: #777;
+    }
   </style>
 </head>
 <body>
-  <h1>Videoox</h1>
-  <p>Enter your satisfying video idea:</p>
-  <input id="prompt" type="text" placeholder="e.g., slime swirl in 4K" />
-  <br/>
+
+  <h1>🎬 Videoox</h1>
+  <p>Enter a satisfying video idea below:</p>
+
+  <input id="prompt" type="text" placeholder="e.g., slime swirl, sand slicing">
+  <br>
   <button onclick="generateVideo()">Generate Video</button>
-  <div class="video-container" id="preview"></div>
-  <div class="privacy">
-    <p><strong>Privacy Policy</strong></p>
-    <p>We only use your text to show a video. No personal data stored or shared.</p>
-    <p>Contact: facelessboy721@gmail.com</p>
+
+  <div class="video-box" id="videoBox">
+    <!-- Generated video will appear here -->
   </div>
+
+  <div class="footer">
+    <p><strong>Privacy Policy:</strong> We do not store your data. All prompts are processed locally. Contact: <a href="mailto:facelessboy721@gmail.com">facelessboy721@gmail.com</a></p>
+  </div>
+
   <script>
     function generateVideo() {
-      const prompt = document.getElementById('prompt').value;
-      const preview = document.getElementById('preview');
-      preview.innerHTML = '';
-      // Demo embed video
-      const iframe = document.createElement('iframe');
-      iframe.width = "560";
-      iframe.height = "315";
-      iframe.src = "https://www.youtube.com/embed/I3vnaLZ-vZ0";
-      iframe.frameBorder = "0";
-      preview.appendChild(iframe);
+      const prompt = document.getElementById('prompt').value.trim();
+      const videoBox = document.getElementById('videoBox');
+
+      if (!prompt) {
+        alert("Please enter a prompt.");
+        return;
+      }
+
+      // Simulate a result using a sample satisfying video
+      const videoEmbed = `
+        <p><strong>Your Prompt:</strong> ${prompt}</p>
+        <iframe src="https://www.youtube.com/embed/I3vnaLZ-vZ0" allowfullscreen></iframe>
+      `;
+      videoBox.innerHTML = videoEmbed;
     }
   </script>
+
 </body>
 </html>
