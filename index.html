@@ -1,88 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Videoox – Satisfying Video Generator</title>
+  <meta charset="UTF-8" />
+  <title>Videoox – AI Video Generator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    :root {
+      --primary: #5b21b6;
+      --bg: #f9fafb;
+      --text: #111827;
+      --accent: #ede9fe;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      text-align: center;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       padding: 40px 20px;
     }
+
+    header {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
     h1 {
-      color: #222;
+      font-size: 2.2rem;
+      color: var(--primary);
     }
-    input, button {
-      padding: 12px;
-      margin: 10px;
-      width: 90%;
-      max-width: 400px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-    }
-    button {
-      background: #008cff;
+
+    .login-btn {
+      background: black;
       color: white;
       border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin: 10px 0 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button.generate {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
       cursor: pointer;
     }
-    button:hover {
-      background: #0066cc;
+
+    button.generate:hover {
+      background: #4c1d95;
     }
-    .video-box {
+
+    .video-preview {
       margin-top: 30px;
     }
+
     iframe {
       width: 100%;
-      max-width: 560px;
       height: 315px;
       border: none;
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
+
     .footer {
       margin-top: 50px;
       font-size: 14px;
-      color: #777;
+      color: #666;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
-  <h1>🎬 Videoox</h1>
-  <p>Enter a satisfying video idea below:</p>
+  <header>
+    <h1>🎬 Videoox</h1>
+    <button class="login-btn" onclick="loginWithGitHub()">
+      <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="20" />
+      Login with GitHub
+    </button>
+  </header>
 
-  <input id="prompt" type="text" placeholder="e.g., slime swirl, sand slicing">
-  <br>
-  <button onclick="generateVideo()">Generate Video</button>
+  <div class="container">
+    <h2>Generate Realistic Satisfying Videos with AI</h2>
+    <input id="prompt" type="text" placeholder="e.g., slime swirl being sliced in 4K">
+    <button class="generate" onclick="generateVideo()">Generate Video</button>
 
-  <div class="video-box" id="videoBox">
-    <!-- Generated video will appear here -->
+    <div class="video-preview" id="videoBox"></div>
   </div>
 
   <div class="footer">
-    <p><strong>Privacy Policy:</strong> We do not store your data. All prompts are processed locally. Contact: <a href="mailto:facelessboy721@gmail.com">facelessboy721@gmail.com</a></p>
+    <p>Privacy Policy: We respect your input. No data is stored. | Contact: facelessboy721@gmail.com</p>
   </div>
 
   <script>
     function generateVideo() {
-      const prompt = document.getElementById('prompt').value.trim();
-      const videoBox = document.getElementById('videoBox');
+      const prompt = document.getElementById("prompt").value.trim();
+      const videoBox = document.getElementById("videoBox");
 
       if (!prompt) {
         alert("Please enter a prompt.");
         return;
       }
 
-      // Simulate a result using a sample satisfying video
-      const videoEmbed = `
+      videoBox.innerHTML = `
         <p><strong>Your Prompt:</strong> ${prompt}</p>
         <iframe src="https://www.youtube.com/embed/I3vnaLZ-vZ0" allowfullscreen></iframe>
       `;
-      videoBox.innerHTML = videoEmbed;
+    }
+
+    function loginWithGitHub() {
+      // Real GitHub auth would go here (for future)
+      alert("GitHub login is not connected yet. This is a placeholder.");
     }
   </script>
 
